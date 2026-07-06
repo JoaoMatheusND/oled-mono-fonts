@@ -1,7 +1,7 @@
 /**
- * @file fonts.c
+ * @file default_font.c
  * @author Paulo Santos (pauloroberto.santos@edge.ufal.br)
- * @brief Declaração das fontes.
+ * @brief Declaração da fonte padrão.
  * @version 0.1
  * @date 22-05-2023
  *

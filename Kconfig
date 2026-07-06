@@ -4,12 +4,30 @@
 menuconfig OLED_FONTS
     bool "OLED Fonts"
 
-if OLED_FONTS
-    config OLED_FONT_5x7
-        bool "ASCII 5x7px default font."
-        default y
+config OLED_FONT_5x7
+    bool "ASCII 5x7px default font."
+    default y
+    depends on OLED_FONTS
 
-    config OLED_FONT_7x10
-        bool "ASCII 7x10px default font."
-        default y
-endif
+config OLED_FONT_7x10
+    bool "ASCII 7x10px default font."
+    default y
+    depends on OLED_FONTS
+
+config OLED_FONT_4x6
+    bool "ASCII 4x6px Tom Thumb font."
+    default n
+    depends on OLED_FONTS
+
+choice
+prompt "OLED Fonts"
+default OLED_FONTS_DEFAULT
+depends on OLED_FONTS
+
+    config OLED_FONTS_DEFAULT
+        bool "Default font."
+
+    config OLED_FONTS_TOMTHUMB
+        bool "Tom Thumb font."
+
+endchoice
