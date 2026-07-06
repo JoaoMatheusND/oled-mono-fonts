@@ -24,6 +24,9 @@
  * @brief Enumera as fontes.
  */
 enum font_sizes {
+#if defined(CONFIG_OLED_FONT_4x6)
+  FONT_SIZE_6, /**< Fonte 4x6. */
+#endif
 #if defined(CONFIG_OLED_FONT_5x7)
   FONT_SIZE_7, /**< Fonte 5x7. */
 #endif
@@ -55,9 +58,5 @@ struct font {
  * @return Fonte desejada.
  */
 const struct font *fonts_get(enum font_sizes font);
-
-/**
- * @}
- */
 
 #endif /* FONTS_H */
