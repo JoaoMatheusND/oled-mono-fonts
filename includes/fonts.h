@@ -45,11 +45,12 @@ enum font_sizes {
  * @brief Descreve uma fonte.
  */
 struct font {
-  const uint8_t *characters; /**< Caracteres. */
-  const uint8_t *widths;     /**< Larguras individuais dos glifos, em pixels.
-                              @note: NULL para fontes monoespaçadas. */
+  const uint8_t *characters; /**< Caracteres.
+                              @note: Em fontes proporcionais, o primeiro byte
+                              de cada glifo é a sua largura, em pixels. */
   const uint8_t width;       /**< Largura da célula do caractere, em pixels. */
   const uint8_t height;      /**< Altura do caractere, em pixels. */
+  const bool is_proportional;  /**< Fonte proporcional (não monoespaçada). */
   const bool is_scan_vertical; /**< Direção de escaneamento da fonte. */
   const uint8_t min_char;      /**< Valor do primeiro caractere. */
   const uint8_t max_char;      /**< Valor do último caractere. */
@@ -62,6 +63,26 @@ struct font {
  * @return Fonte desejada.
  */
 const struct font *fonts_get(enum font_sizes font);
+
+/**
+ * @brief Obtém os dados de um glifo (sem o byte de largura).
+ *
+ * @param font Fonte desejada.
+ * @param character Caractere desejado.
+ * @return Dados do glifo, ou NULL se o caractere não pertence à fonte.
+ */
+const uint8_t *fonts_glyph(const struct font *font, char character);
+
+/**
+ * @brief Obtém a largura de um glifo, em pixels.
+ *
+ * @note Para fontes monoespaçadas retorna a largura da célula.
+ *
+ * @param font Fonte desejada.
+ * @param character Caractere desejado.
+ * @return Largura do glifo, ou 0 se o caractere não pertence à fonte.
+ */
+uint8_t fonts_glyph_width(const struct font *font, char character);
 
 /**
  * @}
