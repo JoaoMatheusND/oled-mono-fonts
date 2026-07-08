@@ -14,6 +14,16 @@ menuconfig OLED_FONTS
         default y
         depends on OLED_FONTS
 
+    config OLED_FONT_5x7_PROP
+        bool "ASCII 5x7px proportional (non-monospace) font."
+        default n
+        depends on OLED_FONTS
+
+    config OLED_FONT_7x10_PROP
+        bool "ASCII 7x10px proportional (non-monospace) font."
+        default n
+        depends on OLED_FONTS
+
 choice
     prompt "Select a font to use"
     default FONT_DEFAULT

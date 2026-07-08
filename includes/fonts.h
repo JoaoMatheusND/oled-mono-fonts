@@ -31,6 +31,12 @@ enum font_sizes {
 #if defined(CONFIG_OLED_FONT_7x10)
   FONT_SIZE_10, /**< Fonte 8x10. */
 #endif
+#if defined(CONFIG_OLED_FONT_5x7_PROP)
+  FONT_SIZE_7_PROP, /**< Fonte 5x7 proporcional. */
+#endif
+#if defined(CONFIG_OLED_FONT_7x10_PROP)
+  FONT_SIZE_10_PROP, /**< Fonte 7x10 proporcional. */
+#endif
 
   FONT_AMOUNT, /**< Número de fontes. */
 };
