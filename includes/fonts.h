@@ -13,6 +13,7 @@
 #define FONTS_H
 
 #include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
 
 /**
@@ -28,7 +29,7 @@ enum font_sizes {
   FONT_SIZE_7, /**< Fonte 5x7. */
 #endif
 #if defined(CONFIG_OLED_FONT_7x10)
-  FONT_SIZE_10,    /**< Fonte 8x10. */
+  FONT_SIZE_10, /**< Fonte 8x10. */
 #endif
 
   FONT_AMOUNT, /**< Número de fontes. */
@@ -39,13 +40,13 @@ enum font_sizes {
  */
 struct font {
   const uint8_t *characters; /**< Caracteres. */
-  struct {
-    const uint8_t width : 3;         /**< Largura do caractere. */
-    const uint8_t height : 4;        /**< Altura do caractere. */
-    const bool is_scan_vertical : 1; /**< Direção de escaneamento da fonte. */
-  };
-  const uint8_t min_char; /**< Valor do primeiro caractere. */
-  const uint8_t max_char; /**< Valor do último caractere. */
+  const uint8_t *widths;     /**< Larguras individuais dos glifos, em pixels.
+                              @note: NULL para fontes monoespaçadas. */
+  const uint8_t width;       /**< Largura da célula do caractere, em pixels. */
+  const uint8_t height;      /**< Altura do caractere, em pixels. */
+  const bool is_scan_vertical; /**< Direção de escaneamento da fonte. */
+  const uint8_t min_char;      /**< Valor do primeiro caractere. */
+  const uint8_t max_char;      /**< Valor do último caractere. */
 };
 
 /**

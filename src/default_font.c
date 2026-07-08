@@ -30,6 +30,7 @@ static const struct font *fonts[FONT_AMOUNT] = {
         &(const struct font){
             .width = 5,
             .height = 7,
+            .widths = NULL, /**< Fonte monoespaçada. */
             .is_scan_vertical = true,  /** Escaneamento vertical -> "@property
                                           width"  bytes por  caractere. */
             .min_char = FONT_MIN_CHAR, /**< Primeiro caractere: ' ' */
@@ -139,6 +140,7 @@ static const struct font *fonts[FONT_AMOUNT] = {
         &(const struct font){
             .width = 7,
             .height = 10,
+            .widths = NULL, /**< Fonte monoespaçada. */
             .is_scan_vertical = false, /** Escaneamento horizontal -> "@property
                                          height" bytes por caractere. */
             .min_char = FONT_MIN_CHAR, /**< Primeiro caractere: ' ' */
